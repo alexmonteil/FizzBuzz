@@ -1,0 +1,77 @@
+﻿
+<div class="container">
+    <!-- First row -->
+    <div class="row justify-content-center">
+        <div class="col-10">
+            <div class="card mt-5 shadow">
+                <div class="card-body">
+                    <h4 class="card-title border-bottom p-1"><i class="fas fa-bolt"></i> Code Review</h4>
+                    <p class="card-text">(1) Extract form variables, (2) Generate range of numbers, (3) Run FizzBuzz logic.</p>
+                    <p class="card-text">Using control flow and modulus, determine if divisible by Fizz and Buzz, just Fizz, or just Buzz</p>
+                    <p class="card-text">Using decisions, display the correct output</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Second row -->
+    <div class="row justify-content-center">
+        <div class="col-10">
+            <!--FizzBuzz Challenge Code -->
+            <pre class="line-numbers p-0" tabindex="0">
+        <code class="language-csharp">
+        public class FizzBuzzData
+        {
+            public int FizzValue { get; set; }
+            public int BuzzValue { get; set; }
+            public List<string> Result { get; set; } = new();
+        }
+
+
+        public IActionResult FizzBuzzPage(FizzBuzzData fizzBuzz)
+        {
+            List<string> fbItems = new();
+            if (fizzBuzz.FizzValue <= 0)
+            {
+                fizzBuzz.FizzValue = 1;
+            }
+
+            if (fizzBuzz.BuzzValue <= 0)
+            {
+                fizzBuzz.BuzzValue = 1;
+            }
+
+            bool fizz;
+            bool buzz;
+
+            for (int i = 1; i <= 100; i++)
+            {
+                fizz = (i % fizzBuzz.FizzValue == 0);
+                buzz = (i % fizzBuzz.BuzzValue == 0);
+
+                if (fizz && buzz)
+                {
+                    fbItems.Add("FizzBuzz");
+                }
+                else if (fizz)
+                {
+                    fbItems.Add("Fizz");
+                }
+                else if (buzz)
+                {
+                    fbItems.Add("Buzz");
+                }
+                else
+                {
+                    fbItems.Add(i.ToString());
+                }
+            }
+
+            fizzBuzz.Result = fbItems;
+            return View(fizzBuzz);
+        }
+        </code>
+            </pre>
+        </div>
+    </div>
+</div>
+
